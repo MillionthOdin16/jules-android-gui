@@ -20,6 +20,8 @@ The app features four main screens:
 - **Settings**: Configure app preferences
 - **About**: Application information and version details
 
+📐 For detailed UI design documentation and mockups, see [DESIGN.md](DESIGN.md).
+
 ## Requirements
 
 - Android 8.0 (API level 26) or higher

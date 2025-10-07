@@ -70,11 +70,13 @@
     
     <!-- About -->
     <string name="about_version">Version</string>
-    <string name="about_description">Jules Android GUI provides a modern, user-friendly interface for Google Jules CLI tools. Execute commands, view results, and manage your Jules workflow with ease.</string>
+    <string name="about_description">Jules Android provides a modern, user-friendly interface for Google\'s Jules AI coding assistant. Create sessions with natural language prompts, connect GitHub repositories, and let Jules help with your development tasks. All API complexity is abstracted away for a seamless experience.</string>
     <string name="about_developer">Developer</string>
     <string name="about_source">Source Code</string>
     <string name="about_license">License</string>
     <string name="about_github">GitHub Repository</string>
+    <string name="about_jules_web">Visit jules.google</string>
+    <string name="about_api_docs">API Documentation</string>
     
     <!-- Dialogs -->
     <string name="dialog_confirm">Confirm</string>

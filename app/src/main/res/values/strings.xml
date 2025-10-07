@@ -1,30 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Jules Android GUI</string>
+    <string name="app_name">Jules</string>
     <string name="title_home">Home</string>
-    <string name="title_commands">Commands</string>
+    <string name="title_commands">Sessions</string>
     <string name="title_settings">Settings</string>
     <string name="title_about">About</string>
     
     <!-- Home Screen -->
     <string name="welcome_title">Welcome to Jules Android GUI</string>
-    <string name="welcome_message">A graphical user interface for Google Jules CLI tools</string>
+    <string name="welcome_message">A modern interface to interact with Google\'s Jules AI coding assistant. Create sessions, get coding help, and manage your development workflow.</string>
     <string name="quick_actions">Quick Actions</string>
     
     <!-- Commands -->
-    <string name="command_execute">Execute</string>
+    <string name="command_execute">Create Session</string>
     <string name="command_clear">Clear</string>
-    <string name="command_history">Command History</string>
-    <string name="command_input_hint">Enter Jules command…</string>
-    <string name="command_output">Output</string>
+    <string name="command_history">Session History</string>
+    <string name="command_input_hint">Enter your prompt for Jules…</string>
+    <string name="command_output">Session Output</string>
     <string name="command_error">Error</string>
-    <string name="no_commands_yet">No commands executed yet</string>
+    <string name="no_commands_yet">No sessions created yet</string>
+    <string name="select_source">Select a source repository first</string>
+    <string name="create_session_title">Create New Session</string>
     
     <!-- Command Categories -->
     <string name="category_general">General</string>
     <string name="category_analysis">Analysis</string>
     <string name="category_configuration">Configuration</string>
     <string name="category_help">Help</string>
+    
+    <!-- Sources -->
+    <string name="sources_title">Sources</string>
+    <string name="sources_empty">No sources connected. Connect a GitHub repository on jules.google</string>
+    <string name="sources_loading">Loading sources…</string>
+    <string name="source_selected">Source selected: %1$s</string>
+    
+    <!-- Sessions -->
+    <string name="sessions_title">Sessions</string>
+    <string name="sessions_empty">No sessions yet. Create your first session!</string>
+    <string name="sessions_loading">Loading sessions…</string>
+    <string name="session_state_active">Active</string>
+    <string name="session_state_completed">Completed</string>
+    <string name="session_state_failed">Failed</string>
     
     <!-- Common Commands -->
     <string name="cmd_help">Help</string>
@@ -38,16 +54,19 @@
     
     <!-- Settings -->
     <string name="settings_general">General Settings</string>
-    <string name="settings_cli_path">CLI Path</string>
-    <string name="settings_cli_path_summary">Path to Jules CLI executable</string>
+    <string name="settings_api_key">Jules API Key</string>
+    <string name="settings_api_key_summary">Your Jules API key for authentication</string>
+    <string name="settings_api_key_hint">Enter your API key</string>
+    <string name="settings_selected_source">Selected Source</string>
+    <string name="settings_selected_source_summary">GitHub repository to use for sessions</string>
     <string name="settings_auto_scroll">Auto-scroll Output</string>
     <string name="settings_auto_scroll_summary">Automatically scroll to bottom of output</string>
     <string name="settings_dark_mode">Dark Mode</string>
     <string name="settings_dark_mode_summary">Use dark theme</string>
-    <string name="settings_save_history">Save Command History</string>
-    <string name="settings_save_history_summary">Persist command history between sessions</string>
+    <string name="settings_save_history">Save Session History</string>
+    <string name="settings_save_history_summary">Persist session history between app restarts</string>
     <string name="settings_max_history">Max History Size</string>
-    <string name="settings_max_history_summary">Maximum number of commands to keep in history</string>
+    <string name="settings_max_history_summary">Maximum number of sessions to keep in history</string>
     
     <!-- About -->
     <string name="about_version">Version</string>
@@ -65,14 +84,18 @@
     <string name="dialog_clear_history_message">Are you sure you want to clear all command history?</string>
     
     <!-- Errors -->
-    <string name="error_command_empty">Please enter a command</string>
-    <string name="error_execution_failed">Command execution failed</string>
-    <string name="error_cli_not_found">Jules CLI not found. Please configure the CLI path in settings.</string>
+    <string name="error_command_empty">Please enter a prompt</string>
+    <string name="error_execution_failed">Session creation failed</string>
+    <string name="error_api_key_not_set">Please configure your API key in settings</string>
+    <string name="error_no_source_selected">Please select a source repository in settings</string>
     <string name="error_permission_denied">Permission denied</string>
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_authentication">Authentication failed. Check your API key.</string>
     
     <!-- Success Messages -->
-    <string name="success_command_executed">Command executed successfully</string>
+    <string name="success_command_executed">Session created successfully</string>
     <string name="success_history_cleared">History cleared</string>
+    <string name="success_api_key_saved">API key saved successfully</string>
     
     <!-- Menu Items -->
     <string name="menu_refresh">Refresh</string>

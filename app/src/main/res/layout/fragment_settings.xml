@@ -33,21 +33,55 @@
                     android:textColor="?attr/colorPrimary" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/cliPathLayout"
+                    android:id="@+id/apiKeyLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:hint="@string/settings_cli_path"
+                    android:hint="@string/settings_api_key"
                     app:boxBackgroundMode="outline"
-                    app:helperText="@string/settings_cli_path_summary"
-                    app:helperTextEnabled="true">
+                    app:helperText="@string/settings_api_key_summary"
+                    app:helperTextEnabled="true"
+                    app:endIconMode="password_toggle">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/cliPathInput"
+                        android:id="@+id/apiKeyInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:text="jules" />
+                        android:inputType="textPassword"
+                        android:hint="@string/settings_api_key_hint" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/loadSourcesButton"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="Load Sources" />
+
+                <TextView
+                    android:id="@+id/sourcesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/settings_selected_source"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sourceSpinnerLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:hint="@string/select_source">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sourceSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

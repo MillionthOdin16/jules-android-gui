@@ -1,6 +1,6 @@
 # Jules Android GUI
 
-A modern Android application that provides a graphical user interface for Google's Jules CLI tools. Built with Kotlin and Material Design 3, this app allows users to easily interact with Jules commands through an intuitive mobile interface.
+A modern Android application that provides a beautiful interface for Google's Jules AI coding assistant. Built with Kotlin and Material Design 3, this app allows users to interact with Jules through an intuitive mobile interface, abstracting away the complexities of the API.
 
 ## 📑 Table of Contents
 
@@ -8,26 +8,26 @@ A modern Android application that provides a graphical user interface for Google
 - [Screenshots](#screenshots)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Setup](#setup)
 - [Usage](#usage)
 - [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Configuration](#configuration)
-- [Development](#development)
-- [Dependencies](#dependencies)
+- [Technical Stack](#technical-stack)
 - [Contributing](#contributing)
 - [Documentation](#documentation)
 - [License](#license)
-- [Support](#support)
 
 ## Features
 
+- 🔐 **API Key Authentication** - Secure authentication with Jules API using API keys
+- 📚 **Source Management** - Connect and manage GitHub repositories as sources
+- 🤖 **AI Sessions** - Create coding sessions with Jules AI using natural language prompts
 - 🎨 **Modern Material Design 3 UI** - Clean, intuitive interface following Google's latest design guidelines
-- 📱 **Bottom Navigation** - Easy access to Home, Commands, Settings, and About screens
-- ⚡ **Command Execution** - Execute Jules CLI commands directly from your Android device
-- 📝 **Output Display** - View command results in a scrollable, formatted output area
-- ⚙️ **Customizable Settings** - Configure CLI path, auto-scroll behavior, and more
-- 💾 **Command History** - Track previously executed commands (configurable)
+- 📱 **Bottom Navigation** - Easy access to Home, Sessions, Settings, and About screens
+- ⚡ **Async API Calls** - Non-blocking network operations using Kotlin Coroutines
+- 💾 **Persistent Settings** - API key and preferences saved securely
 - 🌙 **Dark Mode Support** - Automatically adapts to system theme preferences
+- 🔔 **Real-time Feedback** - Snackbar notifications for all actions
+- 📊 **Session History** - Track your coding sessions and their states
 
 ## Screenshots
 
@@ -42,7 +42,9 @@ The app features four main screens:
 ## Requirements
 
 - Android 8.0 (API level 26) or higher
-- Jules CLI tools installed on the device (or accessible path configured)
+- Jules API Key (get yours at [jules.google](https://jules.google))
+- Connected GitHub repositories on Jules
+- Internet connection for API calls
 
 ## Installation
 
@@ -66,97 +68,117 @@ cd jules-android-gui
 
 The APK will be generated in `app/build/outputs/apk/debug/`
 
+## Setup
+
+### 1. Get Your Jules API Key
+
+1. Visit [jules.google](https://jules.google)
+2. Sign in with your Google account
+3. Navigate to Settings → API Keys
+4. Generate a new API key
+5. Copy the key (you'll need it for the app)
+
+### 2. Connect GitHub Repositories
+
+1. On [jules.google](https://jules.google), connect your GitHub repositories
+2. Install the Jules GitHub app on your repos
+3. These will become available as "sources" in the Android app
+
+### 3. Configure the App
+
+1. Open the Jules Android app
+2. Navigate to Settings (gear icon)
+3. Enter your API key
+4. Tap "Load Sources"
+5. Select your preferred GitHub repository
+6. Save settings
+
 ## Usage
 
-1. **Launch the app** - You'll see the home screen with quick actions
-2. **Navigate to Commands** - Tap the Commands icon in the bottom navigation
-3. **Enter a command** - Type your Jules command (e.g., `--help`, `--version`)
-4. **Execute** - Tap the Execute button or press Enter
-5. **View output** - Results appear in the output area below
-6. **Configure settings** - Adjust CLI path and preferences in the Settings screen
+### Creating a Session
+
+1. **Navigate to Sessions** - Tap the sessions icon in the bottom navigation
+2. **Enter a prompt** - Type what you want Jules to help you with
+   - Example: "Add error handling to the authentication module"
+   - Example: "Write unit tests for the UserRepository class"
+3. **Create Session** - Tap the "Create Session" button
+4. **View result** - See the session details and status
+5. **Visit Jules Web** - Go to [jules.google](https://jules.google) to view full session details, plans, and activities
+
+### Managing Sources
+
+- Settings → Load Sources: Fetch your connected GitHub repositories
+- Settings → Selected Source: Choose which repo to use for sessions
+- All sources must be connected on jules.google first
+
+### Session States
+
+- **PENDING**: Session is being initialized
+- **ACTIVE**: Jules is working on your request
+- **COMPLETED**: Session finished successfully
+- **FAILED**: Session encountered an error
 
 ## Architecture
 
 The app follows Android best practices and modern architecture patterns:
 
-- **MVVM Pattern** - Separation of concerns with ViewModels and LiveData (ready for expansion)
+- **MVVM Pattern** - Separation of concerns with Repository pattern
 - **View Binding** - Type-safe view access
 - **Navigation Component** - Single Activity with multiple Fragments
-- **Coroutines** - Asynchronous command execution
-- **Material Design 3** - Latest Material components and theming
-- **SharedPreferences** - Persistent settings storage
+- **Kotlin Coroutines** - Asynchronous API calls and background operations
+- **Retrofit + OkHttp** - RESTful API client with interceptors
+- **Moshi** - JSON parsing and serialization
+- **Repository Pattern** - Clean abstraction over API calls
 
-## Project Structure
+### Data Flow
 
-```
-app/
-├── src/main/
-│   ├── java/com/jules/android/gui/
-│   │   ├── MainActivity.kt           # Main activity with bottom navigation
-│   │   ├── ui/
-│   │   │   ├── HomeFragment.kt       # Home screen
-│   │   │   ├── CommandsFragment.kt   # Command execution interface
-│   │   │   ├── SettingsFragment.kt   # Settings configuration
-│   │   │   └── AboutFragment.kt      # About information
-│   │   └── utils/
-│   │       ├── CommandExecutor.kt    # CLI command execution logic
-│   │       └── PreferencesHelper.kt  # Settings management
-│   └── res/
-│       ├── layout/                   # XML layouts
-│       ├── values/                   # Colors, strings, themes
-│       ├── navigation/               # Navigation graph
-│       └── menu/                     # Bottom navigation menu
-```
+1. User interacts with Fragment (UI layer)
+2. Fragment calls Repository methods
+3. Repository uses Retrofit to make API calls to Jules API
+4. API responses parsed with Moshi
+5. Results displayed back in Fragment
 
-## Configuration
+### Key Components
 
-### CLI Path Configuration
+**API Layer:**
+- `JulesApiService` - Retrofit interface defining API endpoints
+- `JulesApiClient` - API configuration with authentication interceptor
+- Data models for Sources, Sessions, Activities, Plans
 
-By default, the app looks for the `jules` command in the system PATH. To configure a custom path:
+**Repository Layer:**
+- `JulesRepository` - Abstraction over API calls with Result wrapper
+- Handles error responses and network failures
 
-1. Navigate to **Settings**
-2. Enter the full path to your Jules CLI executable
-3. Tap **Save**
+**UI Layer:**
+- `HomeFragment` - Welcome screen with quick actions
+- `CommandsFragment` - Session creation interface
+- `SettingsFragment` - API key and source configuration
+- `AboutFragment` - App information
 
-### Auto-scroll Output
+**Utilities:**
+- `PreferencesHelper` - SharedPreferences management
+- Stores API key, selected source, and app preferences
 
-Enable or disable automatic scrolling to the bottom of command output in Settings.
+## Technical Stack
 
-## Development
+### Core Technologies
+- **Language**: Kotlin 1.9.20
+- **Min SDK**: API 26 (Android 8.0)
+- **Target SDK**: API 34 (Android 14)
+- **Build Tool**: Gradle 8.2
 
-### Prerequisites
-
-- Android Studio Hedgehog (2023.1.1) or newer
-- JDK 17
-- Android SDK with API level 34
-- Gradle 8.2
-
-### Building
-
-```bash
-# Debug build
-./gradlew assembleDebug
-
-# Release build
-./gradlew assembleRelease
-
-# Run tests
-./gradlew test
-
-# Run lint checks
-./gradlew lint
-```
-
-## Dependencies
-
-- AndroidX Core KTX
-- AndroidX AppCompat
-- Material Components (Material Design 3)
-- Navigation Component
-- Lifecycle Components
-- Kotlin Coroutines
-- ConstraintLayout
-- RecyclerView
+### Libraries
+- **AndroidX Core KTX** - Kotlin extensions
+- **AppCompat** - Backward compatibility
+- **Material Components 1.11.0** - Material Design 3
+- **Navigation Component 2.7.6** - Fragment navigation
+- **Lifecycle Components 2.7.0** - Lifecycle-aware components
+- **Kotlin Coroutines 1.7.3** - Asynchronous programming
+- **Retrofit 2.9.0** - HTTP client
+- **OkHttp 4.12.0** - HTTP/2 client
+- **Moshi 1.15.0** - JSON parser
+- **ConstraintLayout 2.1.4** - Flexible layouts
+- **RecyclerView 1.3.2** - Efficient list display
 
 ## Contributing
 

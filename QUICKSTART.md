@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-Get up and running with Jules Android GUI in minutes!
+Get up and running with Jules Android in minutes!
 
 ## Installation
 
@@ -10,127 +10,175 @@ Get up and running with Jules Android GUI in minutes!
 
 ## First Time Setup
 
-### Step 1: Configure Jules CLI Path
+### Step 1: Get Your Jules API Key
 
-On first launch, you'll need to configure the path to your Jules CLI:
+1. Visit [jules.google](https://jules.google)
+2. Sign in with your Google account
+3. Navigate to **Settings** → **API Keys**
+4. Click **Generate New API Key**
+5. Copy the API key (you'll need it in the next step)
 
-1. Tap the **Settings** icon in the bottom navigation
-2. Find the **CLI Path** field
-3. Enter the path to your Jules executable:
-   - Default: `jules` (if Jules is in your PATH)
-   - Custom: `/path/to/jules` (full path to executable)
-4. Tap **Save Settings**
+### Step 2: Connect GitHub Repositories
 
-### Step 2: Test the Setup
+Before using the app, you need to connect GitHub repositories to Jules:
 
-1. Navigate to the **Commands** screen
-2. Enter a simple command like `--help` or `--version`
-3. Tap **Execute**
-4. Verify the output appears correctly
+1. On [jules.google](https://jules.google), click **Connect Repository**
+2. Authorize the Jules GitHub app
+3. Select repositories you want Jules to access
+4. These repositories will become available as "sources" in the Android app
+
+### Step 3: Configure the App
+
+1. Open the Jules Android app
+2. Tap the **Settings** icon (⚙️) in the bottom navigation
+3. In the **Jules API Key** field, paste your API key
+4. Tap **Load Sources** to fetch your connected repositories
+5. Select a repository from the **Selected Source** dropdown
+6. Tap **Save Settings**
+
+You're all set! 🎉
 
 ## Using the App
 
-### Running Commands
+### Creating a Session
 
-1. **Navigate** to the Commands screen (📤 icon)
-2. **Type** your Jules command in the input field
-   - Example: `--help`
-   - Example: `analyze project.js`
-3. **Execute** by tapping the Execute button or pressing Enter
-4. **View** the output in the scrollable area below
+1. **Navigate to Sessions** - Tap the Sessions icon (📤) in the bottom navigation
+2. **Enter your prompt** - Describe what you want Jules to help with:
+   - Example: "Add error handling to the authentication module"
+   - Example: "Write unit tests for UserRepository"
+   - Example: "Refactor the API client to use coroutines"
+   - Example: "Fix the bug where users can't log out"
+3. **Create Session** - Tap the "Create Session" button
+4. **View response** - You'll see:
+   - Session name (e.g., `sessions/abc123`)
+   - Session state (PENDING, ACTIVE, COMPLETED, etc.)
+   - Message to visit jules.google for full details
+5. **Check Jules Web** - Go to [jules.google](https://jules.google) to:
+   - View the generated plan
+   - See code changes
+   - Approve or provide feedback
+   - Monitor execution progress
 
-### Command Tips
+### Understanding Session States
 
-- Don't include "jules" in your command (it's added automatically)
-- Commands run in the background, so you can continue using the app
-- Output is displayed as it's received from the CLI
-- Previous commands and outputs remain visible above
+- **PENDING**: Session is being initialized
+- **ACTIVE**: Jules is actively working on your request
+- **COMPLETED**: Session finished successfully
+- **FAILED**: Session encountered an error
 
-### Clearing Output
+### Managing Sources
 
-- Tap the **Clear** button to:
-  - Clear the input field
-  - Or clear all output (long press)
+**What are Sources?**  
+Sources are GitHub repositories you've connected to Jules. Each session requires a source (repository) to work with.
 
-### Quick Actions
+**Switching Sources:**
+1. Go to Settings
+2. Select a different repository from the dropdown
+3. Save settings
+4. New sessions will use the selected repository
 
-From the **Home** screen, you can quickly access:
-- **Commands**: Tap the Commands card
-- **Settings**: Tap the Settings card
+**Adding More Sources:**
+1. Visit [jules.google](https://jules.google)
+2. Connect additional repositories
+3. In the app, tap "Load Sources" to refresh the list
 
-## Common Commands
+## Common Prompts
 
-Here are some common Jules commands to try:
+Here are some example prompts to try with Jules:
 
-| Command | Description |
-|---------|-------------|
-| `--help` | Display help information |
-| `--version` | Show Jules version |
-| `status` | Check current status |
-| `info` | Display information |
-| `list` | List available items |
-| `analyze [file]` | Analyze a file |
+| Prompt | Description |
+|--------|-------------|
+| "Add error handling to UserService" | Add try-catch blocks and error handling |
+| "Write unit tests for AuthRepository" | Generate comprehensive unit tests |
+| "Refactor the API client" | Improve code structure and organization |
+| "Fix memory leak in MainActivity" | Identify and fix memory issues |
+| "Add logging to all network calls" | Implement logging throughout |
+| "Update dependencies to latest versions" | Dependency management help |
+| "Implement dark mode support" | Add theme support |
+| "Optimize database queries" | Performance improvements |
 
-*(Replace with actual Jules commands based on the CLI tool)*
+**Tips for Better Prompts:**
+- Be specific about what you want
+- Mention the file or module name
+- Describe the expected outcome
+- Include any constraints or requirements
 
 ## Settings
 
 ### Available Settings
 
-**CLI Path**
-- Default: `jules`
-- Set a custom path if Jules is not in your system PATH
-- Example: `/usr/local/bin/jules`
+**Jules API Key**
+- Required for authentication
+- Get your key from jules.google
+- Stored securely in the app
+- Password field with toggle for security
+
+**Selected Source**
+- Choose which GitHub repository to use
+- Must be connected on jules.google first
+- Use "Load Sources" to refresh the list
 
 **Auto-scroll Output**
 - Enabled by default
-- Automatically scrolls to show the latest output
+- Automatically scrolls to show the latest session info
 - Disable if you want to manually review output
 
-**Save Command History**
+**Save Session History**
 - Enabled by default
-- Persists command history between app sessions
+- Persists session history between app sessions
 - Disable to clear history on app restart
 
 ## Troubleshooting
 
-### "Jules CLI not found" error
+### "API key not configured" error
 
-**Problem**: The app can't find the Jules CLI executable
-
-**Solution**:
-1. Verify Jules is installed on your device
-2. Check the CLI path in Settings
-3. Try the full path: `/usr/local/bin/jules`
-4. Ensure you have permission to execute Jules
-
-### Command hangs or doesn't complete
-
-**Problem**: Command appears to run forever
+**Problem**: The app doesn't have your API key
 
 **Solution**:
-1. Some commands may take a long time
-2. Check if Jules is waiting for input
-3. Try a simpler command first (like `--help`)
-4. Force close and restart the app if needed
+1. Go to Settings
+2. Enter your API key from jules.google
+3. Tap Save Settings
+4. Make sure the API key is valid
 
-### Output is garbled or incorrect
+### "No source selected" error
 
-**Problem**: Output displays incorrectly
-
-**Solution**:
-1. Check that your CLI path is correct
-2. Try running the command in a terminal to compare
-3. Some CLI output may use special characters that don't display well
-
-### Permission Denied
-
-**Problem**: "Permission denied" error when running commands
+**Problem**: No GitHub repository is selected
 
 **Solution**:
-1. Ensure you have permission to execute Jules
-2. Check file permissions: `chmod +x /path/to/jules`
-3. You may need root access for certain commands
+1. Go to Settings
+2. Tap "Load Sources"
+3. Select a repository from the dropdown
+4. Tap Save Settings
+
+### "Authentication failed" error
+
+**Problem**: Invalid or expired API key
+
+**Solution**:
+1. Visit [jules.google](https://jules.google)
+2. Regenerate your API key
+3. Update the key in Settings
+4. Try again
+
+### Sources list is empty
+
+**Problem**: No repositories connected to Jules
+
+**Solution**:
+1. Visit [jules.google](https://jules.google)
+2. Click "Connect Repository"
+3. Authorize and select repositories
+4. In the app, tap "Load Sources" again
+
+### Network errors
+
+**Problem**: Cannot connect to Jules API
+
+**Solution**:
+1. Check your internet connection
+2. Verify the API is accessible (visit jules.google)
+3. Check if your firewall is blocking the app
+4. Try again later if Jules is experiencing issues
 
 ## Tips and Tricks
 
@@ -139,38 +187,45 @@ Here are some common Jules commands to try:
 - Scroll up to see command history
 - Copy output by long-pressing the text
 
-### Keyboard Shortcuts
-- Press **Enter** in the command field to execute
-- Use your device's back button to navigate between screens
+## Tips and Tricks
 
-### Performance
-- Clear output periodically for better performance
-- Disable "Save Command History" if you don't need it
-- Close unused apps to free up memory
+### Session Management
+- Sessions are persistent on jules.google
+- You can have multiple active sessions
+- Check jules.google regularly for updates on session progress
 
-### Best Practices
-- Test commands with `--help` first
-- Start with simple commands before complex ones
-- Keep the CLI path setting backed up
-- Check output carefully before proceeding with operations
+### Best Prompts
+- Be specific and clear about what you want
+- Include file or module names when relevant
+- Describe the desired outcome
+- Mention any constraints or requirements
+
+### Workflow
+1. Create a session with a clear prompt
+2. Visit jules.google to review the plan
+3. Approve or provide feedback
+4. Let Jules execute the changes
+5. Review the results on GitHub
+6. Create follow-up sessions as needed
 
 ## Getting Help
 
 ### In-App Help
-- Visit the **About** screen for app information
-- Check Settings for configuration options
+- **About Screen**: App information and links to Jules
+- **Settings**: Configuration options
 
 ### External Resources
-- [Full Documentation](README.md)
-- [Development Guide](DEVELOPMENT.md)
-- [UI Design Guide](DESIGN.md)
-- [GitHub Issues](https://github.com/MillionthOdin16/jules-android-gui/issues)
+- **Jules Web App**: [jules.google](https://jules.google)
+- **API Documentation**: [developers.google.com/jules](https://developers.google.com/jules)
+- **Full Documentation**: [README.md](README.md)
+- **Development Guide**: [DEVELOPMENT.md](DEVELOPMENT.md)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/MillionthOdin16/jules-android-gui/issues)
 
 ### Reporting Issues
 
 If you encounter a problem:
 
-1. Check this guide first
+1. Check this guide and troubleshooting section
 2. Search [existing issues](https://github.com/MillionthOdin16/jules-android-gui/issues)
 3. Create a new issue with:
    - Steps to reproduce
@@ -178,24 +233,31 @@ If you encounter a problem:
    - Actual behavior
    - Device and Android version
    - Screenshots if applicable
+   - API error messages if any
 
 ## Next Steps
 
 Now that you're set up:
 
-1. ✅ Explore the different screens
-2. ✅ Try running various Jules commands
-3. ✅ Customize settings to your preference
-4. ✅ Provide feedback on GitHub
+1. ✅ Create your first session
+2. ✅ Explore jules.google to see full session details
+3. ✅ Try different types of prompts
+4. ✅ Connect multiple repositories as sources
+5. ✅ Provide feedback to help improve the app
 
 ## Version History
 
-### v1.0 (Current)
-- Initial release
+### v2.0 (Current)
+- Jules API integration
+- API key authentication
+- Source (repository) management
+- Session creation and tracking
 - Material Design 3 UI
-- Command execution
-- Settings configuration
-- About screen
+- Settings and configuration
+- Proper error handling
+
+### v1.0
+- Initial CLI-based version (deprecated)
 
 ## Feedback
 
@@ -204,7 +266,8 @@ We'd love to hear from you!
 - 🐛 Found a bug? [Report it](https://github.com/MillionthOdin16/jules-android-gui/issues)
 - 💡 Have an idea? [Suggest it](https://github.com/MillionthOdin16/jules-android-gui/discussions)
 - ⭐ Like the app? [Star the repo](https://github.com/MillionthOdin16/jules-android-gui)
+- 📝 Questions? Check [jules.google](https://jules.google) documentation
 
 ---
 
-**Happy Jules-ing! 🚀**
+**Happy coding with Jules! 🚀**

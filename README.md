@@ -2,6 +2,23 @@
 
 A modern Android application that provides a graphical user interface for Google's Jules CLI tools. Built with Kotlin and Material Design 3, this app allows users to easily interact with Jules commands through an intuitive mobile interface.
 
+## 📑 Table of Contents
+
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Configuration](#configuration)
+- [Development](#development)
+- [Dependencies](#dependencies)
+- [Contributing](#contributing)
+- [Documentation](#documentation)
+- [License](#license)
+- [Support](#support)
+
 ## Features
 
 - 🎨 **Modern Material Design 3 UI** - Clean, intuitive interface following Google's latest design guidelines
@@ -164,3 +181,17 @@ This project is open source and available under the MIT License.
 ## Support
 
 For issues, questions, or contributions, please visit the [GitHub repository](https://github.com/MillionthOdin16/jules-android-gui).
+
+## Documentation
+
+For more detailed information, see:
+
+- 📘 [Quick Start Guide](QUICKSTART.md) - Get started quickly
+- 🔧 [Development Guide](DEVELOPMENT.md) - For developers
+- 🎨 [Design Documentation](DESIGN.md) - UI/UX details  
+- 🤝 [Contributing Guide](CONTRIBUTING.md) - How to contribute
+- 📋 [Project Overview](PROJECT_OVERVIEW.md) - Complete implementation summary
+
+---
+
+**Built with ❤️ using Kotlin and Material Design 3**
